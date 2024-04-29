@@ -12,6 +12,7 @@ export class KejadianserviceService {
       gambar: 'gambar1.jpg',
       tujuan_instansi: 'Instansi A',
       jumlah_like: 15,
+      date: '2022-2-2 00:00:00',
       komentar: [
         {
           pengguna: 'User1',
@@ -31,6 +32,7 @@ export class KejadianserviceService {
       gambar: 'gambar2.jpg',
       tujuan_instansi: 'Instansi B',
       jumlah_like: 11,
+      date: '2022-2-2 00:00:00',
       komentar: [
         {
           pengguna: 'User3',
@@ -45,4 +47,29 @@ export class KejadianserviceService {
       ],
     },
   ];
+  addKejadian(
+    title: string,
+    description: string,
+    imageUrl: string,
+    targetInstitution: string,
+    date: string
+  ) {
+    const currentDate: Date = new Date();
+    const currentYear: number = currentDate.getFullYear();
+    const currentMonth: number = currentDate.getMonth() + 1;
+    const currentDay: number = currentDate.getDate();
+    const currentHour: number = currentDate.getHours();
+    const currentMinute: number = currentDate.getMinutes();
+    const currentSecond: number = currentDate.getSeconds();
+
+    this.kejadian.push({
+      judul: title,
+      deskripsi: description,
+      gambar: imageUrl,
+      tujuan_instansi: targetInstitution,
+      jumlah_like: 0,
+      date: date,
+      komentar: [],
+    });
+  }
 }
