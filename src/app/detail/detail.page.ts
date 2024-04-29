@@ -25,11 +25,13 @@ export class DetailPage implements OnInit {
     this.kejadian=this.kejadians[this.index]
     this.comments=this.kejadian.komentar
   }
-  like(i:number)
+  like()
   {
-  this.kejadianservice.addLike(i);
-  this.router.navigate(['/detail']);
-
+  this.kejadianservice.addLike(this.index);
+  }
+  likeComment(i:number)
+  {
+  this.kejadianservice.addLikeComment(this.index,i);
   }
 
 }

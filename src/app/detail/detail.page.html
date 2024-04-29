@@ -8,9 +8,9 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">{{ kejadian.judul }}</ion-title>
-      <ion-subtitle>{{ kejadian.tujuan_instansi }}</ion-subtitle>
+      <ion-text>Tujuan : {{ kejadian.tujuan_instansi }}</ion-text>
       <div class="like">
-        <ion-button (click)="like(i)">
+        <ion-button (click)="like()">
           <ion-text>{{ kejadian.jumlah_like }}</ion-text>
           <ion-icon name="thumbs-up"></ion-icon>
         </ion-button>
@@ -23,7 +23,7 @@
       <ion-card-header>
         <ion-card-subtitle>{{ comment.pengguna }}</ion-card-subtitle>
         <div class="like">
-          <ion-button (click)="like(i)">
+          <ion-button (click)="likeComment(i)">
             <ion-text>{{ comment.jumlah_like }}</ion-text>
             <ion-icon name="thumbs-up"></ion-icon>
           </ion-button>

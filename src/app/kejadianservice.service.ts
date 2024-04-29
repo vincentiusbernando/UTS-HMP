@@ -78,5 +78,10 @@ export class KejadianserviceService {
     this.kejadian[k_index].jumlah_like++;
 
   };
+  addLikeComment(k_index:any,c_index:any)
+  {
+    this.kejadian[k_index].komentar[c_index].jumlah_like++;
+
+  };
 }
 
