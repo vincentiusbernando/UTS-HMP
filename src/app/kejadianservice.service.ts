@@ -71,11 +71,12 @@ export class KejadianserviceService {
       date: date,
       komentar: [],
     });
-
+  }
 
   addLike(k_index:any)
   {
     this.kejadian[k_index].jumlah_like++;
 
-  }
+  };
 }
+
