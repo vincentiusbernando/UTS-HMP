@@ -5,48 +5,49 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-list lines="full">
-    <ion-input
-      label="Title"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Enter title"
-      [(ngModel)]="title"
-    ></ion-input>
-    <br />
-    <ion-textarea
-      label="Description"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Enter description"
-      rows="5"
-      [(ngModel)]="description"
-      name="description"
-    ></ion-textarea>
-    <br />
-    <ion-input
-      label="Image URL"
-      label-placement="floating"
-      fill="outline"
-      placeholder="Enter URL"
-      [(ngModel)]="imageUrl"
-    ></ion-input>
-    <br />
-    <ion-select
-      interface="action-sheet"
-      label="Tujuan"
-      label-placement="floating"
-      fill="outline"
-      [(ngModel)]="targetInstitution"
-      name="targetInstitution"
-    >
-      <ion-select-option value="Pemkot">Pemkot</ion-select-option>
-      <ion-select-option value="PLN">PLN</ion-select-option>
-      <ion-select-option value="PDAM">PDAM</ion-select-option>
-      <ion-select-option value="Polisi">Polisi</ion-select-option>
-      <ion-select-option value="Tidak tahu">Tidak tahu</ion-select-option>
-    </ion-select>
-  </ion-list>
+  <div class="container">
 
-  <ion-button expand="block" (click)="addIncident()">Add Incident</ion-button>
+      <ion-input
+        label="Title"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Enter title"
+        [(ngModel)]="title"
+      ></ion-input>
+      <br />
+      <ion-textarea
+        label="Description"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Enter description"
+        rows="5"
+        [(ngModel)]="description"
+        name="description"
+      ></ion-textarea>
+      <br />
+      <ion-input
+        label="Image URL"
+        label-placement="floating"
+        fill="outline"
+        placeholder="Enter URL"
+        [(ngModel)]="imageUrl"
+      ></ion-input>
+      <br />
+      <ion-select
+        interface="action-sheet"
+        label="Tujuan"
+        label-placement="floating"
+        fill="outline"
+        [(ngModel)]="targetInstitution"
+        name="targetInstitution"
+      >
+        <ion-select-option value="Pemkot">Pemkot</ion-select-option>
+        <ion-select-option value="PLN">PLN</ion-select-option>
+        <ion-select-option value="PDAM">PDAM</ion-select-option>
+        <ion-select-option value="Polisi">Polisi</ion-select-option>
+        <ion-select-option value="Tidak tahu">Tidak tahu</ion-select-option>
+      </ion-select>
+    <ion-button expand="block" (click)="addIncident()">Add Incident</ion-button>
+  </div>
+
 </ion-content>
