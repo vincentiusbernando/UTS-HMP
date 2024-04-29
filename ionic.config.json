@@ -1,0 +1,7 @@
+{
+  "name": "Mata Warga",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
