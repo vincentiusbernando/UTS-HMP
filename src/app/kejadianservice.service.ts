@@ -72,7 +72,9 @@ export class KejadianserviceService {
       komentar: [],
     });
   }
-
+  searchJudul(query: string): any[] {
+    return this.kejadian.filter(k => k.judul.toLowerCase().includes(query.toLowerCase()));
+  }
   addLike(k_index:any)
   {
     this.kejadian[k_index].jumlah_like++;
