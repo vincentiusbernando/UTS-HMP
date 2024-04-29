@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserserviceService {
   constructor() {}
+  userLogin={}
   users = [
     {
       username: 'user1',
@@ -25,4 +26,12 @@ export class UserserviceService {
       profile_picture: 'profile3.jpg',
     },
   ];
+  addUser(username:string, fullname:string, password:string, profile_picture:string){
+    this.users.push({
+      username: username,
+      fullname: fullname,
+      password: password,
+      profile_picture: profile_picture,
+    });
+  }
 }

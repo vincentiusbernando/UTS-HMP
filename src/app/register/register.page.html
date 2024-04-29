@@ -5,5 +5,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input label="Username" label-placement="floating" fill="outline" placeholder="Enter text"></ion-input>
+  <div class="container">
+    <h1>Register</h1>
+    <br>
+    <ion-input label="Username" label-placement="floating" fill="outline" placeholder="Enter Username" [(ngModel)]="username"></ion-input>
+    <br>
+    <ion-input label="Full Name" label-placement="floating" fill="outline" placeholder="Enter Full Name" [(ngModel)]="fullName"></ion-input>
+    <br>
+    <ion-input label="Password" label-placement="floating" fill="outline" placeholder="Enter Password" type="password" [(ngModel)]="password"></ion-input>
+    <br>
+    <ion-input label="Foto Profil" label-placement="floating" fill="outline" placeholder="Enter Full Name" [(ngModel)]="profil"></ion-input>
+    <br>
+    <ion-button expand="block" (click)="Register()">Submit</ion-button>
+  </div>
 </ion-content>
