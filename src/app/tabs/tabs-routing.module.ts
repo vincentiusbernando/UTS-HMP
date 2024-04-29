@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../tambah/tambah.module').then(m => m.TambahPageModule)
       },
       {
+        path: 'detail/:index',
+        loadChildren: () => import('../detail/detail.module').then( m => m.DetailPageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'

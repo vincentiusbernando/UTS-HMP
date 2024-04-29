@@ -1,23 +1,31 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ kejadian.judul }}</ion-title>
-      <ion-text>Tujuan : {{ kejadian.tujuan_instansi }}</ion-text>
-      <div class="like">
-        <ion-button (click)="like()">
-          <ion-text>{{ kejadian.jumlah_like }}</ion-text>
-          <ion-icon name="thumbs-up"></ion-icon>
-        </ion-button>
-      </div>
-    </ion-toolbar>
-  </ion-header>
-  <ion-text>{{ kejadian.deskripsi }}</ion-text>
+  <div class="kejadian">
+    <ion-card>
+      <ion-item><ion-img [src]="kejadian.gambar"></ion-img></ion-item>
+      <ion-card-header>
+        <ion-card-title>{{ kejadian.judul }}</ion-card-title>
+        <ion-card-subtitle>Tujuan : {{ kejadian.tujuan_instansi }}</ion-card-subtitle>
+        <div class="like">
+          <ion-button (click)="like()">
+            <ion-text>{{ kejadian.jumlah_like }}</ion-text>
+            <ion-icon name="thumbs-up"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+      <ion-card-content>{{ kejadian.deskripsi }}</ion-card-content>
+    </ion-card>
+  </div>
+  <div> <ion-text size="large">Comments : </ion-text></div>
+
   <div class="comments">
     <ion-card *ngFor="let comment of comments; let i = index">
       <ion-card-header>

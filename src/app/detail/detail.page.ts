@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KejadianserviceService } from '../kejadianservice.service';
 import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +13,7 @@ export class DetailPage implements OnInit {
   kejadians:any[]=[]
   kejadian:any
   comments:any[]=[]
-  constructor(private router: Router, private route: ActivatedRoute, private kejadianservice: KejadianserviceService) { }
+  constructor(private route: ActivatedRoute, private kejadianservice: KejadianserviceService) { }
   index = 0
   ngOnInit() {
     this.kejadians=this.kejadianservice.kejadian

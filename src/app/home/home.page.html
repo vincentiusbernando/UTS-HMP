@@ -14,7 +14,7 @@
     <ion-card *ngFor="let kejadian of kejadians; let i = index">
       <ion-item><ion-img [src]="kejadian.gambar"></ion-img></ion-item>
       <ion-card-header>
-        <ion-item routerLink="/detail/{{i}}"><ion-card-title>{{ kejadian.judul }}</ion-card-title></ion-item>
+        <ion-item routerLink="/tabs/detail/{{i}}"><ion-card-title>{{ kejadian.judul }}</ion-card-title></ion-item>
         <ion-card-subtitle>Tujuan : {{ kejadian.tujuan_instansi }}</ion-card-subtitle>
         <div class="like">
           <ion-button (click)="like(i)">

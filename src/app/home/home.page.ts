@@ -16,7 +16,6 @@ export class HomePage implements OnInit {
   like(i:number)
   {
   this.kejadianservice.addLike(i);
-  this.router.navigate(['/home']);
 
   }
 
