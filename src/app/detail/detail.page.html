@@ -7,7 +7,29 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">detail</ion-title>
+      <ion-title size="large">{{ kejadian.judul }}</ion-title>
+      <ion-subtitle>{{ kejadian.tujuan_instansi }}</ion-subtitle>
+      <div class="like">
+        <ion-button (click)="like(i)">
+          <ion-text>{{ kejadian.jumlah_like }}</ion-text>
+          <ion-icon name="thumbs-up"></ion-icon>
+        </ion-button>
+      </div>
     </ion-toolbar>
   </ion-header>
+  <ion-text>{{ kejadian.deskripsi }}</ion-text>
+  <div class="comments">
+    <ion-card *ngFor="let comment of comments; let i = index">
+      <ion-card-header>
+        <ion-card-subtitle>{{ comment.pengguna }}</ion-card-subtitle>
+        <div class="like">
+          <ion-button (click)="like(i)">
+            <ion-text>{{ comment.jumlah_like }}</ion-text>
+            <ion-icon name="thumbs-up"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+      <ion-card-content>{{ comment.pesan }}</ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

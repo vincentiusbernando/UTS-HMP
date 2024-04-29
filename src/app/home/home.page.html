@@ -10,4 +10,20 @@
       <ion-title size="large">home</ion-title>
     </ion-toolbar>
   </ion-header>
+  <div class="kejadian">
+    <ion-card *ngFor="let kejadian of kejadians; let i = index">
+      <ion-item><ion-img [src]="kejadian.gambar"></ion-img></ion-item>
+      <ion-card-header>
+        <ion-card-title routerLink="/detail/{{i}}">{{ kejadian.judul }}</ion-card-title>
+        <ion-card-subtitle>Tujuan : {{ kejadian.tujuan_instansi }}</ion-card-subtitle>
+        <div class="like">
+          <ion-button (click)="like(i)">
+            <ion-text>{{ kejadian.jumlah_like }}</ion-text>
+            <ion-icon name="thumbs-up"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+      <ion-card-content>{{ kejadian.deskripsi }}</ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
