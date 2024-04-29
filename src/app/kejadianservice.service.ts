@@ -7,6 +7,7 @@ export class KejadianserviceService {
   constructor() {}
   kejadian = [
     {
+      id:1,
       judul: 'Ferdy Sambo Dipenjara',
       deskripsi: '"Terpidana Ferdy Sambo menjalani pidana penjara seumur hidup di Lembaga Permasyarakatan kelas IIA Salemba, Jakarta Pusat," kata Kapuspenkum Kejaksaan Agung (Kejagung) Ketut Sumedana kepada wartawan, Kamis (24/8/2023).',
       gambar: 'https://media.suara.com/pictures/653x366/2023/12/29/90472-ferdy-sambo-dan-putri-candrawathi-igatferdysambo-official.jpg',
@@ -27,6 +28,7 @@ export class KejadianserviceService {
       ],
     },
     {
+      id:2,
       judul: 'Judul Kejadian 2',
       deskripsi: 'Deskripsi Kejadian 2',
       gambar: 'gambar2.jpg',
@@ -63,6 +65,7 @@ export class KejadianserviceService {
     const currentSecond: number = currentDate.getSeconds();
 
     this.kejadian.push({
+      id:this.kejadian.length+1,
       judul: title,
       deskripsi: description,
       gambar: imageUrl,
@@ -75,14 +78,14 @@ export class KejadianserviceService {
   searchJudul(query: string): any[] {
     return this.kejadian.filter(k => k.judul.toLowerCase().includes(query.toLowerCase()));
   }
-  addLike(k_index:any)
+  addLike(k_id:any)
   {
-    this.kejadian[k_index].jumlah_like++;
+    this.kejadian[k_id-1].jumlah_like++;
 
   };
-  addLikeComment(k_index:any,c_index:any)
+  addLikeComment(k_id:any,c_index:any)
   {
-    this.kejadian[k_index].komentar[c_index].jumlah_like++;
+    this.kejadian[k_id-1].komentar[c_index].jumlah_like++;
 
   };
 }

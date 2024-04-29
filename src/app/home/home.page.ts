@@ -13,9 +13,9 @@ export class HomePage implements OnInit {
 
   constructor(private router: Router, private kejadianservice: KejadianserviceService) { }
 
-  like(i:number)
+  like(id:number)
   {
-  this.kejadianservice.addLike(i);
+  this.kejadianservice.addLike(id);
 
   }
 

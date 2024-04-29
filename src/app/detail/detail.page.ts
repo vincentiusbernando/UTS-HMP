@@ -27,11 +27,11 @@ export class DetailPage implements OnInit {
   }
   like()
   {
-  this.kejadianservice.addLike(this.index);
+  this.kejadianservice.addLike(this.kejadian.id);
   }
   likeComment(i:number)
   {
-  this.kejadianservice.addLikeComment(this.index,i);
+  this.kejadianservice.addLikeComment(this.kejadian.id,i);
   }
 
 }
