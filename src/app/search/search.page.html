@@ -5,7 +5,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-input label="Search" label-placement="floating" fill="outline" placeholder="Enter " [(ngModel)]="search" (ngModelChange)="updateDataSource()" style="margin: 1em 0;"></ion-input>
+  <div style="padding: 1em;">
+    <ion-input label="Search" label-placement="floating" fill="outline" placeholder="Enter " [(ngModel)]="search" (ngModelChange)="updateDataSource()"></ion-input>
+  </div>
   <div class="kejadian">
     <ion-card *ngFor="let kejadian of kejadians; let i = index">
       <ion-item><ion-img [src]="kejadian.gambar"></ion-img></ion-item>

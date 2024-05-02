@@ -7,49 +7,61 @@ export class KejadianserviceService {
   constructor() {}
   kejadian = [
     {
-      id:1,
-      judul: 'Ferdy Sambo Dipenjara',
-      deskripsi: '"Terpidana Ferdy Sambo menjalani pidana penjara seumur hidup di Lembaga Permasyarakatan kelas IIA Salemba, Jakarta Pusat," kata Kapuspenkum Kejaksaan Agung (Kejagung) Ketut Sumedana kepada wartawan, Kamis (24/8/2023).',
-      gambar: 'https://media.suara.com/pictures/653x366/2023/12/29/90472-ferdy-sambo-dan-putri-candrawathi-igatferdysambo-official.jpg',
-      tujuan_instansi: 'POLRI',
-      jumlah_like: 15,
-      date: '2022-2-2 00:00:00',
+      pembuat:"Rahmat",
+      id: 1,
+      judul: 'Macet Parah di Jalan Raya Gubeng',
+      deskripsi:
+        'Hujan deras yang mengguyur Kota Surabaya sejak sore hari menyebabkan kemacetan parah di Jalan Raya Gubeng. Para pengendara dihimbau untuk mencari jalan alternatif.',
+      gambar: 'https://akcdn.detik.net.id/community/media/visual/2023/05/08/potret-kemacetan-di-jalan-kh-abdullah-syafei-tebet-5_169.jpeg',
+      tujuan_instansi: 'Pemkot',
+      jumlah_like: 82,
+      date: '2024-05-02 14:30:00',
       komentar: [
         {
-          pengguna: 'VB',
-          pesan: 'HAHAHA.. mampus lu',
-          jumlah_like: 10,
+          pengguna: 'Andi',
+          pesan: 'Duh, jadi telat meeting nih gara-gara macet.  #SurabayaMacet',
+          jumlah_like: 47,
         },
         {
-          pengguna: 'Andre',
-          pesan: 'Yaampun kasian banget',
-          jumlah_like: 5,
+          pengguna: 'Ita',
+          pesan:
+            'Sabar ya teman-teman, semoga hujan segera reda dan lalu lintas lancar kembali.',
+          jumlah_like: 18,
+        },
+        {
+          pengguna: 'Bagas',
+          pesan: 'Mungkin bisa naik angkot aja kali ya biar lebih cepet.',
+          jumlah_like: 17,
         },
       ],
     },
     {
-      id:2,
-      judul: 'Judul Kejadian 2',
-      deskripsi: 'Deskripsi Kejadian 2',
-      gambar: 'gambar2.jpg',
-      tujuan_instansi: 'Instansi B',
-      jumlah_like: 11,
-      date: '2022-2-2 00:00:00',
+      pembuat:"Rahma",
+      id: 2,
+      judul: 'Buaya Berjemur di Sungai Brantas',
+      deskripsi:
+        'Diinformasikan oleh warga sekitar, buaya dengan panjang sekitar 3 meter tersebut terlihat sedang berjemur di pinggir sungai Brantas pada pagi hari. Warga menghimbau untuk berhati-hati.',
+      gambar: 'https://cdn1-production-images-kly.akamaized.net/o5qJypGiZSnj5cW2ZclBYdczNKo=/800x450/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/1578142/original/025876500_1493270690-Buaya8.jpg',
+      tujuan_instansi: 'Tidak tahu',
+      jumlah_like: 27,
+      date: '2024-05-02 10:00:00',
       komentar: [
         {
-          pengguna: 'User3',
-          pesan: 'Komentar ketiga',
-          jumlah_like: 8,
+          pengguna: 'Rina',
+          pesan:
+            'Ya ampun, serem banget! Semoga petugas segera mengamankan buayanya.',
+          jumlah_like: 12,
         },
         {
-          pengguna: 'User4',
-          pesan: 'Komentar keempat',
+          pengguna: 'Tomo',
+          pesan: 'Wah, bisa jadi konten nih. #BuayaBrantas',
           jumlah_like: 3,
         },
       ],
     },
   ];
   addKejadian(
+    pembuat:string,
     title: string,
     description: string,
     imageUrl: string,
@@ -64,8 +76,9 @@ export class KejadianserviceService {
     const currentMinute: number = currentDate.getMinutes();
     const currentSecond: number = currentDate.getSeconds();
 
-    this.kejadian.push({
-      id:this.kejadian.length+1,
+    this.kejadian.unshift({
+      pembuat: pembuat,
+      id: this.kejadian.length + 1,
       judul: title,
       deskripsi: description,
       gambar: imageUrl,
@@ -76,17 +89,14 @@ export class KejadianserviceService {
     });
   }
   searchJudul(query: string): any[] {
-    return this.kejadian.filter(k => k.judul.toLowerCase().includes(query.toLowerCase()));
+    return this.kejadian.filter((k) =>
+      k.judul.toLowerCase().includes(query.toLowerCase())
+    );
   }
-  addLike(k_id:any)
-  {
-    this.kejadian[k_id-1].jumlah_like++;
-
-  };
-  addLikeComment(k_id:any,c_index:any)
-  {
-    this.kejadian[k_id-1].komentar[c_index].jumlah_like++;
-
-  };
+  addLike(k_id: any) {
+    this.kejadian[k_id - 1].jumlah_like++;
+  }
+  addLikeComment(k_id: any, c_index: any) {
+    this.kejadian[k_id - 1].komentar[c_index].jumlah_like++;
+  }
 }
-

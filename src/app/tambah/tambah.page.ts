@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { KejadianserviceService } from '../kejadianservice.service';
+import { UserserviceService } from '../userservice.service';
 
 @Component({
   selector: 'app-tambah',
@@ -12,7 +13,8 @@ export class TambahPage {
   constructor(
     private kejadianService: KejadianserviceService,
     private router: Router,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private userService: UserserviceService,
   ) {}
 
   title = '';
@@ -40,13 +42,16 @@ export class TambahPage {
       currentMinute +
       ':' +
       currentSecond;
+
     this.kejadianService.addKejadian(
+      this.userService.userLogin.fullname,
       this.title,
       this.description,
       this.imageUrl,
       this.targetInstitution,
       this.date
     );
+    console.log(this.userService.userLogin.fullname);
     this.title = '';
     this.description = '';
     this.imageUrl = '';
