@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KejadianserviceService } from '../kejadianservice.service';
+import { UserserviceService } from '../userservice.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +12,7 @@ export class HomePage implements OnInit {
 
   kejadians:any[]=[]
 
-  constructor(private router: Router, private kejadianservice: KejadianserviceService) { }
+  constructor(private userService: UserserviceService,private router: Router, private kejadianservice: KejadianserviceService) { }
 
   like(id:number)
   {
@@ -29,6 +30,17 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     this.kejadians=this.kejadianservice.kejadian
+  }
+
+  Logout() {
+    this.userService.userLogin={
+      username: '',
+      fullname: '',
+      password: '',
+      profile_picture: '',
+    };
+    this.router.navigate([""]);
+
   }
 
 }
