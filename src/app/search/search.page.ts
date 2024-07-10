@@ -31,7 +31,7 @@ export class SearchPage implements OnInit {
     this.kejadians=this.kejadianservice.kejadian
   }
   updateDataSource(){
-    this.kejadians=this.kejadianservice.searchJudul(this.search)
-    console.log(this.kejadians)
+    // this.kejadians=this.kejadianservice.searchJudul(this.search)
+    // console.log(this.kejadians)
   }
 }

@@ -13,9 +13,7 @@ export class RegisterPage {
     private userService: UserserviceService,
     private router: Router,
     private toastController: ToastController
-  ) {
-    console.log(userService.users);
-  }
+  ) {}
 
   username = '';
   password = '';
@@ -31,15 +29,15 @@ export class RegisterPage {
     await toast.present();
   }
   Register() {
-    this.berhasil = true;
-    for (const user of this.userService.users) {
-      if (this.username === user.username) {
-        this.presentToast('Username telah terdaftar');
-        this.berhasil = false;
-      }
-    }
-    if (this.berhasil) {
-      this.userService.addUser(
+    // this.berhasil = true;
+    // for (const user of this.userService.users) {
+    //   if (this.username === user.username) {
+    //     this.presentToast('Username telah terdaftar');
+    //     this.berhasil = false;
+    //   }
+    // }
+    // if (this.berhasil) {
+      this.userService.Register(
         this.username,
         this.fullName,
         this.password,
@@ -52,5 +50,5 @@ export class RegisterPage {
       this.presentToast('Username berhasil didaftarkan');
       this.router.navigate(['']);
     }
-  }
+  // }
 }

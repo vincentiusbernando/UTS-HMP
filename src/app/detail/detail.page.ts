@@ -31,7 +31,7 @@ export class DetailPage implements OnInit {
   }
   likeComment(i:number)
   {
-  this.kejadianservice.addLikeComment(this.kejadian.id,i);
+  // this.kejadianservice.addLikeComment(this.kejadian.id,i);
   }
 
 }

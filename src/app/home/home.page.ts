@@ -9,15 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  kejadians: any[] = [];
 
-  kejadians:any[]=[]
+  constructor(
+    private userService: UserserviceService,
+    private router: Router,
+    private kejadianservice: KejadianserviceService
+  ) {
+    this.refreshList();
+  }
+  refreshList() {
+    this.kejadianservice.KejadianList('').subscribe((data) => {
+      this.kejadians = data;
+      console.log(this.kejadians);
+    });
+  }
 
-  constructor(private userService: UserserviceService,private router: Router, private kejadianservice: KejadianserviceService) { }
-
-  like(id:number)
-  {
-  this.kejadianservice.addLike(id);
-
+  like(id: number) {
+    this.kejadianservice.addLike(id);
   }
 
   chunkArray(arr: any[], chunkSize: number): any[][] {
@@ -29,18 +38,16 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.kejadians=this.kejadianservice.kejadian
+    this.kejadians = this.kejadianservice.kejadian;
   }
 
   Logout() {
-    this.userService.userLogin={
+    this.userService.userLogin = {
       username: '',
       fullname: '',
       password: '',
       profile_picture: '',
     };
-    this.router.navigate([""]);
-
+    this.router.navigate(['']);
   }
-
 }
