@@ -26,7 +26,15 @@ export class HomePage implements OnInit {
   }
 
   like(id: number) {
-    this.kejadianservice.addLike(id);
+    console.log(id);
+    this.kejadianservice.addLike(id).subscribe((response: any) => {
+      if (response.result === 'success') {
+        this.refreshList()
+      }
+      else {
+        alert(response.message)
+      }
+    });
   }
 
   chunkArray(arr: any[], chunkSize: number): any[][] {

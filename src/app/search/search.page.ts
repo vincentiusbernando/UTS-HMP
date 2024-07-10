@@ -11,12 +11,21 @@ export class SearchPage implements OnInit {
 
   kejadians:any[]=[]
   search=""
-  constructor(private router: Router, private kejadianservice: KejadianserviceService) { }
+  constructor(private router: Router, private kejadianservice: KejadianserviceService) {
+    this.kejadianservice.KejadianList(this.search).subscribe((data) => {
+      this.kejadians = data;
+    });
+  }
 
-  like(id:number)
-  {
-  this.kejadianservice.addLike(id);
-
+  like(id: number) {
+    this.kejadianservice.addLike(id).subscribe((response: any) => {
+      if (response.result === 'success') {
+        this.updateDataSource()
+      }
+      else {
+        alert(response.message)
+      }
+    });
   }
 
   chunkArray(arr: any[], chunkSize: number): any[][] {
@@ -27,11 +36,16 @@ export class SearchPage implements OnInit {
     return result;
   }
 
+
+
   ngOnInit() {
     this.kejadians=this.kejadianservice.kejadian
   }
   updateDataSource(){
     // this.kejadians=this.kejadianservice.searchJudul(this.search)
     // console.log(this.kejadians)
+    this.kejadianservice.KejadianList(this.search).subscribe((data) => {
+      this.kejadians = data;
+    });
   }
 }

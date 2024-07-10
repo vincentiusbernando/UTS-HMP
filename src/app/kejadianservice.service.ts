@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -53,5 +53,15 @@ export class KejadianserviceService {
   //     k.judul.toLowerCase().includes(query.toLowerCase())
   //   );
   // }
-  addLike(k_id: any) {}
+  // addLike(k_id: number) {
+  //   return this.http.get(this.link + 'like_kejadian.php?id=' + k_id.toString());
+  // }
+
+  addLike(k_id: number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const body = new URLSearchParams();
+    body.set('id', k_id.toString());
+    const urlEncodedData = body.toString();
+    return this.http.post("https://ubaya.me/hybrid/160421013/like_kejadian.php", urlEncodedData, { headers });
+  }
 }
