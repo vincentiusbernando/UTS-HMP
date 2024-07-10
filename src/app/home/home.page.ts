@@ -42,12 +42,7 @@ export class HomePage implements OnInit {
   }
 
   Logout() {
-    this.userService.userLogin = {
-      username: '',
-      fullname: '',
-      password: '',
-      profile_picture: '',
-    };
+    this.userService.userLoginID = 0;
     this.router.navigate(['']);
   }
 }

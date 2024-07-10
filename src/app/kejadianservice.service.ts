@@ -6,13 +6,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class KejadianserviceService {
-
-  link = "https://ubaya.me/hybrid/160421013/";
+  link = 'https://ubaya.me/hybrid/160421013/';
   constructor(private http: HttpClient) {}
   kejadian = [];
 
   KejadianList(search: string): Observable<any> {
     return this.http.get(this.link + 'list_kejadian.php?search=' + search);
+  }
+  DetailKejadian(id: number): Observable<any> {
+    return this.http.get(this.link + 'detail_kejadian.php?id=' + id);
+  }
+  ListComment(id: number): Observable<any> {
+    return this.http.get(this.link + 'list_komentar.php?id=' + id);
+  }
+  AddComment(kejadians_id: number, users_id: number): Observable<any> {
+    return this.http.get(
+      this.link +
+        '.php?kejadians_id=' +
+        kejadians_id +
+        '&users_id=' +
+        users_id
+    );
   }
   addKejadian(
     pembuat: string,

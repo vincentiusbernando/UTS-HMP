@@ -37,18 +37,20 @@ export class RegisterPage {
     //   }
     // }
     // if (this.berhasil) {
-      this.userService.Register(
-        this.username,
-        this.fullName,
-        this.password,
-        this.profil
-      );
-      this.username = '';
-      this.password = '';
-      this.fullName = '';
-      this.profil = '';
-      this.presentToast('Username berhasil didaftarkan');
-      this.router.navigate(['']);
-    }
+    this.userService
+      .Register(this.username, this.fullName, this.password, this.profil)
+      .subscribe((response: any) => {
+        if (response.result === 'success') {
+          this.username = '';
+          this.password = '';
+          this.fullName = '';
+          this.profil = '';
+          this.presentToast('Username berhasil didaftarkan');
+          this.router.navigate(['']);
+        } else {
+          alert(response.message);
+        }
+      });
+  }
   // }
 }

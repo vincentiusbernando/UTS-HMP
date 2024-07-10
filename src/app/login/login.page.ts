@@ -23,6 +23,7 @@ export class LoginPage {
       .Login(this.username, this.password)
       .subscribe((response: any) => {
         if (response.result === 'success') {
+          this.userService.userLoginID = response.id;
           this.presentToast('Berhasil Login');
           this.router.navigate(['tabs/home']);
         } else {

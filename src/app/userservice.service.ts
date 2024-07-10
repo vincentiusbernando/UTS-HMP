@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class UserserviceService {
   link = 'https://ubaya.me/hybrid/160421013/';
   constructor(private http: HttpClient) {}
-  userLogin: any = {};
+  userLoginID: number = 0;
 
   Register(
     username: string,

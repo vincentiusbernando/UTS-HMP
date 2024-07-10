@@ -43,15 +43,15 @@ export class TambahPage {
       ':' +
       currentSecond;
 
-    this.kejadianService.addKejadian(
-      this.userService.userLogin.fullname,
-      this.title,
-      this.description,
-      this.imageUrl,
-      this.targetInstitution,
-      this.date
-    );
-    console.log(this.userService.userLogin.fullname);
+    // this.kejadianService.addKejadian(
+    //   this.userService.userLogin.fullname,
+    //   this.title,
+    //   this.description,
+    //   this.imageUrl,
+    //   this.targetInstitution,
+    //   this.date
+    // );
+    // console.log(this.userService.userLogin.fullname);
     this.title = '';
     this.description = '';
     this.imageUrl = '';
