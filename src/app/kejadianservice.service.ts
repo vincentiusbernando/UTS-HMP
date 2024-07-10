@@ -19,14 +19,22 @@ export class KejadianserviceService {
   ListComment(id: number): Observable<any> {
     return this.http.get(this.link + 'list_komentar.php?id=' + id);
   }
-  AddComment(kejadians_id: number, users_id: number): Observable<any> {
-    return this.http.get(
-      this.link +
-        '.php?kejadians_id=' +
-        kejadians_id +
-        '&users_id=' +
-        users_id
-    );
+  AddComment(
+    kejadians_id: number,
+    users_id: number,
+    new_komentar: string
+  ): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+    const body = new URLSearchParams();
+    body.set('kejadian_id', kejadians_id.toString());
+    body.set('user_id', users_id.toString());
+    body.set('pesan', new_komentar);
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + 'add_komentar.php', urlEncodedData, {
+      headers,
+    });
   }
   addKejadian(
     pembuat: string,
@@ -58,10 +66,16 @@ export class KejadianserviceService {
   // }
 
   addLike(k_id: number) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
     const body = new URLSearchParams();
     body.set('id', k_id.toString());
     const urlEncodedData = body.toString();
-    return this.http.post("https://ubaya.me/hybrid/160421013/like_kejadian.php", urlEncodedData, { headers });
+    return this.http.post(
+      'https://ubaya.me/hybrid/160421013/like_kejadian.php',
+      urlEncodedData,
+      { headers }
+    );
   }
 }

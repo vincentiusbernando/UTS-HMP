@@ -30,11 +30,11 @@
       label="Comment"
       label-placement="floating"
       fill="outline"
-      placeholder="Enter Password"
-      type="password"
+      placeholder="Enter Comment"
+      type="text"
       [(ngModel)]="new_comment"
     ></ion-input
-    ><ion-button (click)="AddComment(kejadian.id)">></ion-button>
+    ><ion-button (click)="AddComment()">></ion-button>
   </div>
   <div><ion-text size="large">Comments : </ion-text></div>
   <div class="comments">

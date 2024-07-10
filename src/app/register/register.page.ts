@@ -29,14 +29,6 @@ export class RegisterPage {
     await toast.present();
   }
   Register() {
-    // this.berhasil = true;
-    // for (const user of this.userService.users) {
-    //   if (this.username === user.username) {
-    //     this.presentToast('Username telah terdaftar');
-    //     this.berhasil = false;
-    //   }
-    // }
-    // if (this.berhasil) {
     this.userService
       .Register(this.username, this.fullName, this.password, this.profil)
       .subscribe((response: any) => {
@@ -52,5 +44,4 @@ export class RegisterPage {
         }
       });
   }
-  // }
 }

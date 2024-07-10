@@ -33,11 +33,13 @@ export class DetailPage implements OnInit {
     this.Refresh();
   }
   like() {}
-  AddComment(kejadians_id: number) {
+  AddComment() {
+    console.log(this.index, this.userService.userLoginID, this.new_comment);
     this.kejadianservice
-      .AddComment(this.index, this.userService.userLoginID)
-      .subscribe();
-    this.new_comment = '';
-    this.Refresh();
+      .AddComment(this.index, this.userService.userLoginID, this.new_comment)
+      .subscribe(() => {
+        this.new_comment = '';
+        this.Refresh();
+      });
   }
 }
