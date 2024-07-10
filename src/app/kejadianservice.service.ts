@@ -37,24 +37,26 @@ export class KejadianserviceService {
     });
   }
   addKejadian(
-    pembuat: string,
+    pembuat: number,
     title: string,
     description: string,
     imageUrl: string,
     targetInstitution: string,
-    date: string
-  ) {
-    // this.kejadian.unshift({
-    //   pembuat: pembuat,
-    //   id: this.kejadian.length + 1,
-    //   judul: title,
-    //   deskripsi: description,
-    //   gambar: imageUrl,
-    //   tujuan_instansi: targetInstitution,
-    //   jumlah_like: 0,
-    //   date: date,
-    //   komentar: [],
-    // });
+  ): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+    const body = new URLSearchParams();
+    body.set('pembuat', pembuat.toString());
+    body.set('judul', title);
+    body.set('tujuan', targetInstitution);
+    body.set('deskripsi', description);
+    body.set('gambar', imageUrl);
+    console.log(pembuat,title,description,imageUrl,targetInstitution);
+    const urlEncodedData = body.toString();
+    return this.http.post(this.link + 'add_kejadian.php', urlEncodedData, {
+      headers,
+    });
   }
   // searchJudul(query: string): any[] {
   //   return this.kejadian.filter((k) =>

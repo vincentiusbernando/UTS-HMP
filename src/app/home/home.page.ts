@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    this.kejadians = this.kejadianservice.kejadian;
+    this.refreshList();
   }
 
   Logout() {

@@ -23,25 +23,33 @@ export class TambahPage {
   targetInstitution = '';
   date = '';
   addIncident() {
-    const currentDate: Date = new Date();
-    const currentYear: number = currentDate.getFullYear();
-    const currentMonth: number = currentDate.getMonth() + 1;
-    const currentDay: number = currentDate.getDate();
-    const currentHour: number = currentDate.getHours();
-    const currentMinute: number = currentDate.getMinutes();
-    const currentSecond: number = currentDate.getSeconds();
-    this.date =
-      currentYear +
-      '-' +
-      currentMonth +
-      '-' +
-      currentDay +
-      ' ' +
-      currentHour +
-      ':' +
-      currentMinute +
-      ':' +
-      currentSecond;
+    // const currentDate: Date = new Date();
+    // const currentYear: number = currentDate.getFullYear();
+    // const currentMonth: number = currentDate.getMonth() + 1;
+    // const currentDay: number = currentDate.getDate();
+    // const currentHour: number = currentDate.getHours();
+    // const currentMinute: number = currentDate.getMinutes();
+    // const currentSecond: number = currentDate.getSeconds();
+    // this.date =
+      // currentYear +
+      // '-' +
+      // currentMonth +
+      // '-' +
+      // currentDay +
+      // ' ' +
+      // currentHour +
+      // ':' +
+      // currentMinute +
+      // ':' +
+      // currentSecond;
+
+      this.kejadianService.addKejadian(this.userService.userLoginID, this.title, this.description, this.imageUrl, this.targetInstitution).subscribe(() => {
+        this.title="";
+        this.description="";
+        this.imageUrl="";
+        this.presentToast('Kejadian Berhasil Ditambahkan');
+        this.router.navigate(['/tabs/home']);
+      });
 
     // this.kejadianService.addKejadian(
     //   this.userService.userLogin.fullname,
@@ -52,14 +60,7 @@ export class TambahPage {
     //   this.date
     // );
     // console.log(this.userService.userLogin.fullname);
-    this.title = '';
-    this.description = '';
-    this.imageUrl = '';
-    this.targetInstitution = '';
-    this.date = '';
-    this.presentToast('Kejadian Berhasil Ditambahkan');
-    console.log(this.kejadianService.kejadian);
-    this.router.navigate(['/tabs/home']);
+
   }
   async presentToast(msg: string) {
     const toast = await this.toastController.create({
