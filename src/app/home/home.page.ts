@@ -45,6 +45,10 @@ export class HomePage implements OnInit {
     return result;
   }
 
+  ionViewWillEnter() {
+    this.refreshList();
+  }
+
   ngOnInit() {
     this.refreshList();
   }

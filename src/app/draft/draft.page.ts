@@ -20,6 +20,9 @@ export class DraftPage implements OnInit {
   async Refresh() {
     this.kejadians = await this.dex.getAllItems();
   }
+  ionViewWillEnter() {
+    this.Refresh();
+  }
   ngOnInit() {
     this.Refresh();
   }
