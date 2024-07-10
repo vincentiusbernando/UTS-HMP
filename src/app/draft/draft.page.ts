@@ -1,43 +1,42 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { DexieService, Kejadian } from '../dexie.service';
 import { KejadianserviceService } from '../kejadianservice.service';
+import { ToastController } from '@ionic/angular';
 import { UserserviceService } from '../userservice.service';
 
 @Component({
-  selector: 'app-tambah',
-  templateUrl: './tambah.page.html',
-  styleUrls: ['./tambah.page.scss'],
+  selector: 'app-draft',
+  templateUrl: './draft.page.html',
+  styleUrls: ['./draft.page.scss'],
 })
-export class TambahPage {
+export class DraftPage implements OnInit {
+  kejadians: Kejadian[] = [];
   constructor(
+    private dex: DexieService,
     private kejadianService: KejadianserviceService,
-    private router: Router,
     private toastController: ToastController,
     private userService: UserserviceService
   ) {}
-
-  title = '';
-  description = '';
-  imageUrl = '';
-  targetInstitution = '';
-  date = '';
-  addIncident() {
+  async Refresh() {
+    this.kejadians = await this.dex.getAllItems();
+  }
+  ngOnInit() {
+    this.Refresh();
+  }
+  Publish(kejadian: Kejadian) {
     this.kejadianService
       .addKejadian(
         this.userService.userLoginID,
-        this.title,
-        this.description,
-        this.imageUrl,
-        this.targetInstitution
+        kejadian.judul,
+        kejadian.deskripsi,
+        kejadian.gambar,
+        kejadian.tujuan
       )
       .subscribe(() => {
-        this.title = '';
-        this.description = '';
-        this.imageUrl = '';
         this.presentToast('Kejadian Berhasil Ditambahkan');
-        this.router.navigate(['/tabs/home']);
       });
+    this.dex.removeItem(kejadian.id ?? 0);
+    this.Refresh();
   }
   async presentToast(msg: string) {
     const toast = await this.toastController.create({

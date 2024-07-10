@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>tambah</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-input
+      label="Title"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Enter title"
+      [(ngModel)]="judul"
+    ></ion-input>
+    <br />
+    <ion-textarea
+      label="Description"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Enter description"
+      rows="5"
+      [(ngModel)]="deskripsi"
+      name="description"
+    ></ion-textarea>
+    <br />
+    <ion-input
+      label="Image URL"
+      label-placement="floating"
+      fill="outline"
+      placeholder="Enter URL"
+      [(ngModel)]="gambar"
+    ></ion-input>
+    <br />
+    <ion-select
+      interface="action-sheet"
+      label="Tujuan"
+      label-placement="floating"
+      fill="outline"
+      [(ngModel)]="tujuan"
+      name="targetInstitution"
+    >
+      <ion-select-option value="Pemkot">Pemkot</ion-select-option>
+      <ion-select-option value="PLN">PLN</ion-select-option>
+      <ion-select-option value="PDAM">PDAM</ion-select-option>
+      <ion-select-option value="Polisi">Polisi</ion-select-option>
+      <ion-select-option value="Tidak tahu">Tidak tahu</ion-select-option>
+    </ion-select>
+    <ion-button expand="block" (click)="addDraftIncident()"
+      >Add Draft Incident</ion-button
+    >
+  </div>
+</ion-content>

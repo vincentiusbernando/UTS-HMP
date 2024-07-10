@@ -1,3 +1,5 @@
+import { TambahDraftPageModule } from './../tambah-draft/tambah-draft.module';
+import { DraftPageModule } from './../draft/draft.module';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
@@ -18,6 +20,14 @@ const routes: Routes = [
       {
         path: 'tambah',
         loadChildren: () => import('../tambah/tambah.module').then(m => m.TambahPageModule)
+      },
+      {
+        path: 'draft',
+        loadChildren: () => import('../draft/draft.module').then(m => m.DraftPageModule)
+      },
+      {
+        path: 'tambah_draft',
+        loadChildren: () => import('../tambah-draft/tambah-draft.module').then(m => m.TambahDraftPageModule)
       },
       {
         path: 'detail/:index',

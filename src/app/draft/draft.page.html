@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Draft</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div class="kejadian">
+    <ion-card *ngFor="let kejadian of kejadians; let i = index">
+      <ion-item><ion-img [src]="kejadian.gambar"></ion-img></ion-item>
+      <ion-card-header>
+        <ion-card-title>{{ kejadian.judul }}</ion-card-title>
+        <ion-card-subtitle>Tujuan : {{ kejadian.tujuan }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>{{ kejadian.deskripsi }}</ion-card-content>
+      <ion-button (click)="Publish(kejadian)" style="display: flex"
+        >Publish</ion-button
+      >
+    </ion-card>
+  </div>
+</ion-content>
